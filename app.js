@@ -7,4 +7,4 @@ const morgan = require('morgan')
 require('express-async-errors')
 const bodyParser = require('body-parser')
 const logger = require('./utils/logger')
-const 
+const middleware = require('./utils/middleware')
