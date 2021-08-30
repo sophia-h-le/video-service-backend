@@ -24,7 +24,9 @@ const userSchema = new mongoose.Schema({
             ref: 'Video'
         }
     ]
-})
+},
+    {timestamps: true}
+)
 
 userSchema.set('toJSON', {
     transform: (document, returnedObject) => {

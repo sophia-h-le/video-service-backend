@@ -35,13 +35,17 @@ const videoSchema = new mongoose.Schema({
         ref: 'Channel',
         required: true
     },
-    likes: {
-        type: Number
-    },
+    votes: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Vote'
+    }],
     comments: [{
-        type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comment'
     }]
-})
+},
+    {timestamps: true}
+)
 
 videoSchema.set('toJSON', {
     transform: (document, returnedObject) => {
