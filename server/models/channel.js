@@ -29,7 +29,7 @@ const channelSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Video'
     }],
-    subscribedUsers: [{
+    subscribers: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }]

@@ -1,18 +1,6 @@
 const mongoose = require('mongoose')
 const uniqueValidator = require('mongoose-unique-validator')
 
-const url = process.env.MONGODB_URI
-
-console.log('connecting to ', url)
-
-mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
-    .then(result => {
-        console.log('connected to MongoDB')
-    })
-    .catch((error) => {
-        console.log('error connecting to MongoDB: ', error.message)
-    })
-
 const videoSchema = new mongoose.Schema({
     videoTitle: {
         type: String,
@@ -24,25 +12,25 @@ const videoSchema = new mongoose.Schema({
         type: String,
         required: true,
         minLength: 3
-    },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
-    channel: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Channel',
-        required: true
-    },
-    votes: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Vote'
-    }],
-    comments: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Comment'
-    }]
+    }
+    // user: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User',
+    //     required: true
+    // },
+    // channel: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Channel',
+    //     required: true
+    // },
+    // votes: [{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Vote'
+    // }],
+    // comments: [{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Comment'
+    // }]
 },
     {timestamps: true}
 )
