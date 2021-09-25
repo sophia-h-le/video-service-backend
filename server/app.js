@@ -23,7 +23,7 @@ mongoose.connect(
 app.set('view engine', 'handlebars')
 app.engine('handlebars', handlebars({
     layoutsDir: __dirname + '/views/layouts',
-    defaultLayout: 'index'
+    defaultLayout: 'main'
 }))
 
 app.use(express.static('public'))
@@ -33,7 +33,7 @@ app.use(cors())
 app.use(middleware.requestLogger)
 
 app.get('/', (request, response) => {
-    response.render('main')
+    response.json([{url: 'test'}])
 })
 app.use('/api/videos', videosRouter)
 
