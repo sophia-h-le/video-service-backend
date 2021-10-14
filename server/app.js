@@ -25,6 +25,7 @@ mongoose.connect(
     }
 )
 
+<<<<<<< HEAD
 
 
 // app.set('view engine', 'handlebars')
@@ -36,6 +37,12 @@ mongoose.connect(
 //enable files upload
 app.use(fileUpload({
     createParentPath: true
+=======
+app.set('view engine', 'handlebars')
+app.engine('handlebars', handlebars({
+    layoutsDir: __dirname + '/views/layouts',
+    defaultLayout: 'main'
+>>>>>>> f48dfa6647d966939204164d6ea4e25096428b00
 }))
 
 app.use(express.static('public'))
