@@ -10,6 +10,11 @@ const mongoose = require('mongoose')
 require('express-async-errors')
 const bodyParser = require('body-parser')
 const handlebars = require('express-handlebars')
+const fileUpload = require('express-fileupload')
+const _ = require('lodash')
+// const aws = require('aws-sdk')
+const multer = require('multer')
+const multerS3 = require('multer-s3')
 
 logger.info('connecting to', config.MONGODB_URI)
 mongoose.connect(
@@ -20,10 +25,17 @@ mongoose.connect(
     }
 )
 
-app.set('view engine', 'handlebars')
-app.engine('handlebars', handlebars({
-    layoutsDir: __dirname + '/views/layouts',
-    defaultLayout: 'index'
+
+
+// app.set('view engine', 'handlebars')
+// app.engine('handlebars', handlebars({
+//     layoutsDir: __dirname + '/views/layouts',
+//     defaultLayout: 'main'
+// }))
+
+//enable files upload
+app.use(fileUpload({
+    createParentPath: true
 }))
 
 app.use(express.static('public'))
@@ -33,7 +45,7 @@ app.use(cors())
 app.use(middleware.requestLogger)
 
 app.get('/', (request, response) => {
-    response.render('main')
+    response.json([{url: 'test'}])
 })
 app.use('/api/videos', videosRouter)
 

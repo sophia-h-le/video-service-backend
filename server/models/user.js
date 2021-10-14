@@ -12,12 +12,12 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    channels: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Channel'
-        }
-    ],
+    // channels: [
+    //     {
+    //         type: mongoose.Schema.Types.ObjectId,
+    //         ref: 'Channel'
+    //     }
+    // ],
     videos: [
         {
             type: mongoose.Schema.Types.ObjectId,
